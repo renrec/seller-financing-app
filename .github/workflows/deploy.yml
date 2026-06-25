@@ -34,12 +34,12 @@ jobs:
       - name: Install dependencies
         run: |
           cd seller-financing-tool
-          npm ci
+          npm install
 
       - name: Build application
         run: |
           cd seller-financing-tool
-          npm run build
+          npm run build 2>&1
 
       - name: Upload build artifacts
         uses: actions/upload-pages-artifact@v3
