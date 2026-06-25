@@ -34,12 +34,17 @@ jobs:
         run: npm install
 
       - name: Build application
-        run: npm run build
+        run: |
+          echo "Building with npm..."
+          npm run build --verbose
+          echo "Build completed. Checking dist folder..."
+          ls -la dist/ || echo "dist folder not found"
 
       - name: Upload build artifacts
         uses: actions/upload-pages-artifact@v3
         with:
           path: 'dist'
+        if: always()
 
   deploy:
     if: github.ref == 'refs/heads/main'
