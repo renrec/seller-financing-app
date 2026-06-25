@@ -35,10 +35,8 @@ jobs:
 
       - name: Build application
         run: |
-          echo "Building with npm..."
-          npm run build --verbose
-          echo "Build completed. Checking dist folder..."
-          ls -la dist/ || echo "dist folder not found"
+          npm run build 2>&1
+          echo "Exit code: $?"
 
       - name: Upload build artifacts
         uses: actions/upload-pages-artifact@v3
