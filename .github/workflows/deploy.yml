@@ -29,16 +29,12 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
+          cache-dependency-path: 'seller-financing-tool/package-lock.json'
 
       - name: Install dependencies
         run: |
           cd seller-financing-tool
           npm ci
-
-      - name: Check Node and npm versions
-        run: |
-          node --version
-          npm --version
 
       - name: Build application
         run: |
