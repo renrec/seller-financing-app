@@ -31,7 +31,9 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          cd seller-financing-tool
+          npm ci
 
       - name: Check Node and npm versions
         run: |
@@ -39,12 +41,14 @@ jobs:
           npm --version
 
       - name: Build application
-        run: npm run build 2>&1
+        run: |
+          cd seller-financing-tool
+          npm run build
 
       - name: Upload build artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'dist'
+          path: 'seller-financing-tool/build'
         if: always()
 
   deploy:
